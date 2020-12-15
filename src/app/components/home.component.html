@@ -1,0 +1,44 @@
+
+<form [formGroup] = "declarationForm">
+    Do you have any symptoms?
+    <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="personalSymptoms" id="yes" value = "yes">
+        <label class="form-check-label" for="personalSymptoms">
+          Yes
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="personalSymptoms" id="no" value="no">
+        <label class="form-check-label" for="personalSymptoms">
+          No
+        </label>
+    </div>
+    
+      <br>
+    
+    Does your household members have symptoms?
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="householdSymptoms" id="yes" value = "yes">
+        <label class="form-check-label" for="householdSymptoms">
+          Yes
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="householdSymptoms" id="no" value="no">
+        <label class="form-check-label" for="householdSymptoms">
+          No
+        </label>
+      </div>
+      <br>
+      <div class="input-group mb-3">
+        <input formControlName = "temperature" type="text" class="form-control" placeholder="Enter temperature" aria-label="Username" aria-describedby="basic-addon1">
+    </div>    
+    Picture Evidence
+    <div>
+        <input accept="image/*" type="file" name ="imageFile" (change)="onFileSelect($event)" />
+    </div>
+<br>
+    <button (click) = "submit()" type="button" class="btn btn-primary" [disabled] = "declarationForm.invalid">
+        Submit
+    </button>
+</form>
