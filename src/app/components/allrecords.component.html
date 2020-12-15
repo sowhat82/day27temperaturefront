@@ -1,0 +1,23 @@
+<h2>Previous Submissions</h2>
+<button type="button" class="btn btn-primary mx-2 float-right" [routerLink] = "['/']">Home</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">NRIC</th>
+      <th scope="col">Personal Symptoms</th>
+      <th scope="col">Household Symptoms</th>
+      <th scope="col">Temperature</th>
+      <th scope="col">Picture URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor = "let c of allDetails">
+        <td>{{c.NRIC}}</td>
+        <td>{{c.personalSymptoms}}</td>
+        <td>{{c.householdSymptoms}}</td>
+        <td>{{c.temperature}} °C</td>
+        <td><a href="https://tfipbucket.fra1.digitaloceanspaces.com/{{c.digitalOceanKey}}" target = "_blank">Link</a></td>
+        <button (click) = "deleteRecord(c._id)" type="button" class="btn btn-warning">Delete</button>
+    </tr>
+  </tbody>
+</table>

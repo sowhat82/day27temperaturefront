@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Database } from '../database.service';
 
 @Component({
   selector: 'app-home',
@@ -13,11 +14,12 @@ export class HomeComponent implements OnInit {
   declarationForm: FormGroup
   file = ""
 
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private router:Router, private db: Database) { }
 
   ngOnInit(): void {
 
     this.declarationForm = this.fb.group({
+      NRIC: this.fb.control('', [Validators.required]),
       personalSymptoms: this.fb.control('', [Validators.required]),
       householdSymptoms: this.fb.control('', [Validators.required]),
       temperature: this.fb.control('', [Validators.required]),
@@ -47,6 +49,7 @@ export class HomeComponent implements OnInit {
     } 
 
     const params = new HttpParams()
+    .set('NRIC', this.declarationForm.get('NRIC').value)
     .set('personalSymptoms', this.declarationForm.get('personalSymptoms').value)
     .set('householdSymptoms', this.declarationForm.get('householdSymptoms').value)
     .set('temperature', this.declarationForm.get('temperature').value)
@@ -68,5 +71,8 @@ export class HomeComponent implements OnInit {
         window.alert(response.error.message)
       }
     )
+
+    this.db.NRIC = this.declarationForm.get('NRIC').value
+    this.router.navigate(['/confirmation'])
   }
 }

@@ -1,5 +1,11 @@
 
 <form [formGroup] = "declarationForm">
+
+    NRIC
+    <div class="input-group mb-3">
+        <input formControlName = "NRIC" type="text" class="form-control" placeholder="Enter IC" aria-label="Username" aria-describedby="basic-addon1">
+    </div>    
+
     Do you have any symptoms?
     <div class="form-check">
         <input class="form-check-input" type="radio" formControlName="personalSymptoms" id="yes" value = "yes">
@@ -42,3 +48,7 @@
         Submit
     </button>
 </form>
+<br>
+<button [routerLink] = "['/allRecords']" type="button" class="btn btn-primary">
+    See existing submissions
+</button>

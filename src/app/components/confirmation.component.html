@@ -1,1 +1,12 @@
-<p>confirmation works!</p>
+<button type="button" class="btn btn-primary mx-2" [routerLink] = "['/']">Home</button>
+<H2>Submission Confirmation</H2>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title" *ngIf = "confirmationDetails[0].NRIC !== 'undefined'">NRIC: {{confirmationDetails[0].NRIC}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted" *ngIf = "confirmationDetails[0].temperature">Temp: {{confirmationDetails[0].temperature}} °C</h6>
+      <img *ngIf = "confirmationDetails.digitalOceanKey !== 'undefined'" src="https://tfipbucket.fra1.digitaloceanspaces.com/{{confirmationDetails[0].digitalOceanKey}}" class="img-fluid" width="100%">      
+    </div>
+</div>
+<br>
+
+

@@ -6,21 +6,26 @@ import { HomeComponent } from './components/home.component';
 import { Routes, RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ConfirmationComponent } from './components/confirmation.component';
+import { Database } from './database.service';
+import { AllrecordsComponent } from './components/allrecords.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'confirmation', component: ConfirmationComponent },
+  { path: 'allRecords', component: AllrecordsComponent },
   ];
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    AllrecordsComponent
   ],
   imports: [
     BrowserModule, BrowserModule, HttpClientModule, RouterModule.forRoot(appRoutes), FormsModule, ReactiveFormsModule
   ],
-  providers: [],
+  providers: [Database],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
